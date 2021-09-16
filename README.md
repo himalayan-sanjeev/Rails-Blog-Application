@@ -1,4 +1,4 @@
-# ** Milestone3 (Ruby on Rails) Project: Blog Application **
+# ** Ruby on Rails Project: Blog Application **
 
 _## Features of Blog App_
 
