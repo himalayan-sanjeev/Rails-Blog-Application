@@ -1,0 +1,10 @@
+
+<form action="<%= article_comments_path(article) %>">
+   <input type="hidden" name="authenticity_token">
+    <textarea name="comment[content]" rows="6" cols="10" class="field form-group" placeholder="Write Comment Content here.."></textarea>     
+    
+    <br>
+    
+    <input type="submit" value="Submit" class="btn btn-secondary" >
+</form>     
+

@@ -1,0 +1,25 @@
+<h1>Recent Articles</h1>
+<div class="container-lg">
+
+<div class="card mb-3 ">
+
+<% @articles.each do |article| %>
+  <img src="..." class="card-img-top" alt="...">
+  <div class="card-body text-dark bg-light border-primary">
+
+    <h5 class="card-header  "> <%= link_to article.title, article %></h5>
+    <p class="card-text"><small class="text-muted">Posted by :<%= article.user.email %></small></p>
+    <p class="card-text"><small class="text-muted">Posted on :<%= article.created_at %></small></p>
+
+    <p class="card-text"><%= article.body %></p>
+
+  </div>
+
+<% end %>
+</div>
+</div>
+
+
+
+
+

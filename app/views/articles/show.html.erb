@@ -1,0 +1,42 @@
+<div class="container-lg">
+<div class="card card-body">
+<div>
+<h1><%= @article.title %></h1><br>
+</div>
+
+<div>
+<p><%= @article.body %></p>
+</div>
+
+<%= render @article.comments %>
+
+
+
+<div class="card my-1"> 
+  <div class="card-body">
+    <p class="font-weight-bold">Comments</p>
+    <%= form_with(model: [@article, @article.comments.build]) do |f| %>
+      <div class="form-group">
+        <%= f.label 'New comment' %>
+        <%= f.text_area :body, class: 'form-control' %>
+      </div>
+      <br>
+      <%= f.submit 'Post Comment', class: 'btn btn-primary' %>
+    <% end %>
+  </div>
+</div>
+
+
+</div>
+
+<div class="btn btn-dark">
+<%= link_to 'Edit', edit_article_path(@article) %>
+</div>
+<div class="btn btn-danger">
+<%= link_to 'Delete', article_path(@article), method: :delete, data: {confirm:" Are you sure to delete?"} %>
+</div>
+<div class="btn btn-warning">
+<%= link_to 'Back', root_path(@article) %>
+</div>
+
+</div>
