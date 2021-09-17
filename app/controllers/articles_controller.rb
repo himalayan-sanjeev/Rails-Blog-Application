@@ -1,8 +1,9 @@
 class ArticlesController < ApplicationController
   before_action :set_article, only: [ :edit, :update, :destroy]
   before_action :authenticate_user!, except: [:index, :show]
-  before_action :correct_user, only: [:edit, :update, :destroy]
-  
+  # before_action :correct_user, only: [:edit, :update, :destroy]
+  before_action :is_admin!, except: [:index, :show]
+
   def index
     @articles=Article.order(created_at: :DESC)
   end
@@ -53,12 +54,12 @@ class ArticlesController < ApplicationController
   end
 
 
-  def correct_user
-    @article = current_user.articles.find_by(params[:id])
-    # @article = current_user.articles.find(params[:id])
+  # def correct_user
+  #   @article = current_user.articles.find_by(params[:id])
+  #   # @article = current_user.articles.find(params[:id])
 
-    redirect_to articles_path, notice: "Not authorized to Edit this Article !" if @article.nil?
-  end
+  #   redirect_to articles_path, notice: "Not authorized to Edit this Article !" if @article.nil?
+  # end
 
   private
 
