@@ -19,11 +19,38 @@
         </li>
         <% end %>
       </ul>
-       <ul class="nav navbar-nav my-2 my-lg-0">
+        
+ <ul class="nav navbar-nav my-2 my-lg-0"> 
        <% if user_signed_in? %>
-         <%= link_to current_user.email, edit_user_registration_path, class: "nav-link "%>
 
-         <%= link_to "Sign Out", destroy_user_session_path,method: :delete, class: "nav-link "%>
+<li class="nav-item dropdown">
+    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" aria-haspopup="true" role="button" data-bs-toggle="dropdown" aria-expanded="false"><%= current_user.username %></a>
+          <ul class="dropdown-menu dropdown-menu-left" aria-labelledby="navbarDropdownMenuLink">
+            <%= link_to "New Post", new_article_path, class: "dropdown-item"%>
+
+            <%= link_to "View Profile", destroy_user_session_path, class:"dropdown-item" %>
+
+            <%= link_to "Edit Profile", edit_user_registration_path, class:"dropdown-item" %>
+
+            <%
+=begin%>
+ <%= link_to "Sign Out", destroy_user_session_path,method: :delete, class:"dropdown-item" %> 
+<%
+=end%>
+
+            <%= link_to "Delete Account", cancel_user_registration_path,method: :delete, class:"dropdown-item" %>
+
+          </ul>
+</li>
+         <%
+=begin%>
+ <%= link_to current_user.username, edit_user_registration_path, class: "nav-link "%> 
+<%
+=end%>
+
+         
+ <%= link_to "Sign Out", destroy_user_session_path,method: :delete, class: "nav-link "%> 
+
        <% else %>
        		<%= link_to "Sign Up", new_user_registration_path, class: "nav-link"%>
        		<%= link_to "Sign In", new_user_session_path, class: "nav-link "%>
@@ -32,4 +59,6 @@
  </ul>
     </div>
   </div>
+
+
 </nav>
